@@ -4,9 +4,11 @@ sudo: false
 
 cache: apt
 
+notifications:
+  email: false
+
 _packages:
   - &default_packages
-    - mysql-server
   - &GCC
     addons:
       apt:
@@ -57,6 +59,3 @@ matrix:
 script:
   - $CC --version
   - $CXX --version
-
-notifications:
-  email: false
