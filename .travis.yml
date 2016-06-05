@@ -10,18 +10,23 @@ env:
 
 sudo: false
 
-addons:
-  apt:
-    packages: &default_packages
-      - mysql-server
-
 matrix:
   include:
     - env: AAA=1
       addons:
         apt:
           packages:
-            - g++-4.9-multilib
+            - mysql-server
+      before_install:
+        - echo THIS IS (NOT) WORKING!
+
+    - compiler: gcc
+      before_script:
+        - echo THIS IS (NOT) WORKING!
+
+    - env: AAA=2
+      after_script:
+        - echo THIS IS (NOT) WORKING!
 
 script:
   - g++ -v
