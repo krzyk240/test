@@ -8,42 +8,44 @@ _packages:
   - &default_packages
     - mysql-server
   - &GCC
-    apt:
-      sources:
-        - ubuntu-toolchain-r-test
-      packages:
-        - *default_packages
-        - g++-4.9-multilib
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - *default_packages
+          - g++-4.9-multilib
   - &Clang
-    apt:
-      sources:
-        - ubuntu-toolchain-r-test
-        - llvm-toolchain-precise-3.6
-      packages:
-        - *default_packages
-        - clang-3.6
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+          - llvm-toolchain-precise-3.6
+        packages:
+          - *default_packages
+          - clang-3.6
 
 matrix:
   include:
     # GCC
     - compiler: gcc
-      addons: *GCC
+      *GCC
       env:
     - compiler: gcc
-      addons: *GCC
+      *GCC
       env: DEBUG=1
     - compiler: gcc
-      addons: *GCC
+      *GCC
       env: DEBUG=2
     # Clang
     - compiler: clang
-      addons: *Clang
+      *Clang
       env:
     - compiler: clang
-      addons: *Clang
+      *Clang
       env: DEBUG=1
     - compiler: clang
-      addons: *Clang
+      *Clang
       env: DEBUG=2
 
 install:
