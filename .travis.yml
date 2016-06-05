@@ -34,6 +34,7 @@ _packages:
       - export CXX="clang++-3.6"
 
 matrix:
+  fast_finish: true
   include:
     # GCC
     - compiler: gcc
