@@ -20,34 +20,34 @@ cmpiler:
 
 matrix:
   fast_finish: true
-  include:
+  # include:
     # GCC 4.9
-    compiler: gcc
+  - compiler: gcc
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - *default_packages
+          - g++-4.9-multilib
+    env:
+      global:
+        - CC=gcc-4.9
+        - CXX=g++-4.9
+    # Clang 3.6
+    - compiler: clang
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.6
           packages:
             - *default_packages
-            - g++-4.9-multilib
+            - clang-3.6
       env:
         global:
-          - CC=gcc-4.9
-          - CXX=g++-4.9
-      # Clang 3.6
-      compiler: clang
-        addons:
-          apt:
-            sources:
-              - ubuntu-toolchain-r-test
-              - llvm-toolchain-precise-3.6
-            packages:
-              - *default_packages
-              - clang-3.6
-        env:
-          global:
-            - CC=clang-3.6
-            - CXX=clang++-3.6
+          - CC=clang-3.6
+          - CXX=clang++-3.6
 
 script:
   - $CC --version
