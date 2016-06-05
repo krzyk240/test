@@ -4,6 +4,10 @@ compiler:
   - gcc
   - clang
 
+-env:
+  - AAA=1
+  - AAA=2
+
 sudo: false
 
 addons:
@@ -13,7 +17,7 @@ addons:
 
 matrix:
   include:
-    - compiler: gcc
+    - env: AAA=1
       addons:
         apt:
           sources:
