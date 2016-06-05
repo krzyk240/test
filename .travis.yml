@@ -9,6 +9,19 @@ addons:
     packages: &default_packages
       - mysql-server
 
+compiler:
+  - compiler: gcc
+    addons:
+      apt:
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - *default_packages
+          - g++-4.9-multilib
+    before_install:
+      - export CC=gcc-4.9
+      - export CXX=g++-4.9
+
 env:
   -
   - DEBUG=1
@@ -26,7 +39,7 @@ matrix:
           packages:
             - *default_packages
             - g++-4.9-multilib
-      before_install:
+      install:
         - export CC=gcc-4.9
         - export CXX=g++-4.9
     # Clang 3.6
@@ -39,7 +52,7 @@ matrix:
           packages:
             - *default_packages
             - clang-3.6
-      before_install:
+      install:
         - export CC=clang-3.6
         - export CXX=clang++-3.6
 
