@@ -13,11 +13,7 @@ matrix:
   include:
     # GCC 4.9
     - compiler: gcc
-      env:
-        matrix:
-          -
-          - DEBUG=1
-          - DEBUG=2
+      &GCC
       addons:
         apt:
           sources:
@@ -35,6 +31,9 @@ matrix:
           packages:
             - *default_packages
             - clang-3.6
+    - compiler: gcc
+      env: DEBUG=1
+      *GCC
 
 install:
   # Compiler
