@@ -29,23 +29,23 @@ matrix:
   include:
     # GCC
     - compiler: gcc
-      - *GCC
+      <<: *GCC
       env:
     - compiler: gcc
-      - *GCC
+      <<: *GCC
       env: DEBUG=1
     - compiler: gcc
-      - *GCC
+      <<: *GCC
       env: DEBUG=2
     # Clang
     - compiler: clang
-      - *Clang
+      <<: *Clang
       env:
     - compiler: clang
-      - *Clang
+      <<: *Clang
       env: DEBUG=1
     - compiler: clang
-      - *Clang
+      <<: *Clang
       env: DEBUG=2
 
 install:
