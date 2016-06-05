@@ -4,9 +4,9 @@ sudo: false
 
 cache: apt
 
-addons: &dafault_addons
+addons:
   apt:
-    packages:
+    packages: &default_packages
       - mysql-server
 
 matrix:
@@ -19,6 +19,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - &default_packages
             - g++-4.9
       env: COMPILER=g++-4.9
     # GCC 5
@@ -28,6 +29,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - &default_packages
             - g++-5
       env: COMPILER=g++-5
     # Clang 3.6
@@ -38,8 +40,8 @@ matrix:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.6
           packages:
+            - &default_packages
             - clang-3.6
-      - <<: *default_addons
       env: COMPILER=clang++-3.6
     # Clang 3.7
     - compiler: clang
@@ -49,6 +51,7 @@ matrix:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.7
           packages:
+            - &default_packages
             - clang-3.7
       env: COMPILER=clang++-3.7
 
