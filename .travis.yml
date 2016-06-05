@@ -1,32 +1,48 @@
 language: cpp
 
-compiler:
-  - gcc
-  - clang
-
-env:
-  - AAA=1
-  - AAA=2
-
 sudo: false
 
 matrix:
+  fast_finish: true
   include:
-    - env: AAA=1
+    # GCC 4.9
+    - compiler: gcc
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
-            - mysql-server
-      before_install:
-        - echo THIS IS (NOT) WORKING!
-
+            - g++-4.9
+      env: COMPILER=g++-4.9
+    # GCC 5
     - compiler: gcc
-      before_script:
-        - echo THIS IS (NOT) WORKING!
-
-    - env: AAA=3
-      after_script:
-        - echo THIS IS (NOT) WORKING!
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+      env: COMPILER=g++-5
+    # Clang 3.6
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.6
+          packages:
+            - clang-3.6
+      env: COMPILER=clang++-3.6
+    # Clang 3.7
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.7
+          packages:
+            - clang-3.7
+      env: COMPILER=clang++-3.7
 
 script:
   - g++ -v
