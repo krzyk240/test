@@ -14,9 +14,10 @@ matrix:
     # GCC 4.9
     - compiler: gcc
       env:
-        -
-        - DEBUG=1
-        - DEBUG=2
+        matrix:
+          -
+          - DEBUG=1
+          - DEBUG=2
       addons:
         apt:
           sources:
