@@ -2,6 +2,11 @@ language: cpp
 
 sudo: false
 
+addons: &dafault_addons
+  apt:
+    packages:
+      - mysql-server
+
 matrix:
   fast_finish: true
   include:
