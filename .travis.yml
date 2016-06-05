@@ -9,6 +9,11 @@ addons:
     packages: &default_packages
       - mysql-server
 
+env:
+  -
+  - DEBUG=1
+  - DEBUG=2
+
 matrix:
   fast_finish: true
   include:
@@ -20,18 +25,8 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - *default_packages
-            - g++-4.9
-      env: COMPILER=g++-4.9
-    # GCC 5
-    - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - *default_packages
-            - g++-5
-      env: COMPILER=g++-5
+            - g++-4.9-multilib
+      env: CC=gcc-4.9 CXX=g++-4.9
     # Clang 3.6
     - compiler: clang
       addons:
@@ -42,22 +37,11 @@ matrix:
           packages:
             - *default_packages
             - clang-3.6
-      env: COMPILER=clang++-3.6
-    # Clang 3.7
-    - compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.7
-          packages:
-            - *default_packages
-            - clang-3.7
-      env: COMPILER=clang++-3.7
+      env: CC=clang-3.6 CXX=clang++-3.6
 
 script:
-  - g++ -v
-  - clang++ -v
+  - $(CC) --version
+  - $(CXX) --version
 
 notifications:
   email: false
