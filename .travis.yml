@@ -12,16 +12,14 @@ sudo: false
 
 addons:
   apt:
-    packages:
-      - &default_packages [mysql-server]
+    packages: &default_packages
+      - mysql-server
 
 matrix:
   include:
     - env: AAA=1
       addons:
         apt:
-          sources:
-            - ubuntu-toolchain-r-test
           packages:
             - g++-4.9-multilib
 
