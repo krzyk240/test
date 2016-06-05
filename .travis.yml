@@ -26,7 +26,9 @@ matrix:
           packages:
             - *default_packages
             - g++-4.9-multilib
-      env: CC=gcc-4.9 CXX=g++-4.9
+      before_install:
+        - export CC=gcc-4.9
+        - export CXX=g++-4.9
     # Clang 3.6
     - compiler: clang
       addons:
@@ -37,7 +39,9 @@ matrix:
           packages:
             - *default_packages
             - clang-3.6
-      env: CC=clang-3.6 CXX=clang++-3.6
+      before_install:
+        - export CC=clang-3.6
+        - export CXX=clang++-3.6
 
 script:
   - $(CC) --version
