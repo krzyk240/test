@@ -15,6 +15,9 @@ _packages:
         packages:
           - *default_packages
           - g++-4.9-multilib
+    before_install:
+      - export CC="gcc-4.9"
+      - export CXX="g++-4.9"
   - &Clang
     addons:
       apt:
@@ -24,6 +27,9 @@ _packages:
         packages:
           - *default_packages
           - clang-3.6
+    before_install:
+      - export CC="clang-3.6"
+      - export CXX="clang++-3.6"
 
 matrix:
   include:
@@ -47,13 +53,6 @@ matrix:
     - compiler: clang
       <<: *Clang
       env: DEBUG=2
-
-install:
-  # Compiler
-  - if [ "$CC" = "gcc" ]; then export CC="gcc-4.9"; fi
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9"; fi
-  - if [ "$CC" = "clang" ]; then export CC="clang-3.6"; fi
-  - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.6"; fi
 
 script:
   - $CC --version
