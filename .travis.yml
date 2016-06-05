@@ -10,9 +10,10 @@ addons:
       - mysql-server
 
 env:
-  -
-  - DEBUG=1
-  - DEBUG=2
+  matrix:
+    -
+    - DEBUG=1
+    - DEBUG=2
 
 compiler:
   - gcc
