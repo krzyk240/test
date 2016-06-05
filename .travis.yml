@@ -14,7 +14,7 @@ env:
   - DEBUG=1
   - DEBUG=2
 
-cmpiler:
+compiler:
   - gcc
   - clang
 
@@ -22,7 +22,7 @@ matrix:
   fast_finish: true
   # include:
     # GCC 4.9
-  - compiler: gcc
+  compiler: gcc
     addons:
       apt:
         sources:
@@ -35,7 +35,7 @@ matrix:
         - CC=gcc-4.9
         - CXX=g++-4.9
   # Clang 3.6
-  - compiler: clang
+  compiler: clang
     addons:
       apt:
         sources:
