@@ -14,6 +14,10 @@ env:
   - DEBUG=1
   - DEBUG=2
 
+cmpiler:
+  - gcc
+  - clang
+
 matrix:
   fast_finish: true
   # include:
