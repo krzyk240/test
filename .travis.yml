@@ -24,7 +24,7 @@ matrix:
       before_script:
         - echo THIS IS (NOT) WORKING!
 
-    - env: AAA=2
+    - env: AAA=3
       after_script:
         - echo THIS IS (NOT) WORKING!
 
