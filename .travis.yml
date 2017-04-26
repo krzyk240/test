@@ -64,3 +64,5 @@ matrix:
 script:
   - $CC --version
   - $CXX --version
+  - find /usr/include/ | grep unistd
+  - ls -l /usr/include
