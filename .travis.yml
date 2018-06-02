@@ -66,4 +66,4 @@ script:
   - $CXX --version
   - find /usr/include/ | grep unistd
   - ls -l /usr/include
-  - curl -L 'https://github.com/varqox/test/releases/download/static-files/data.tar.xz' | (mkdir libseccomp; tar xJ -C libseccmop)
+  - curl -L 'https://github.com/varqox/test/releases/download/static-files/data.tar.xz' | (mkdir libseccomp; tar xJ -C libseccomp)
