@@ -66,3 +66,4 @@ script:
   - $CXX --version
   - find /usr/include/ | grep unistd
   - ls -l /usr/include
+  - cat /usr/include/linux/version.h
