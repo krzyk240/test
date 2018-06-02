@@ -66,4 +66,5 @@ script:
   - $CXX --version
   - find /usr/include/ | grep unistd
   - ls -l /usr/include
-  - cat /usr/include/linux/version.h
+  - wget 'http://de.archive.ubuntu.com/ubuntu/pool/main/libs/libseccomp/libseccomp-dev_2.3.1-2.1ubuntu4_amd64.deb'
+  - dpkg --fsys-tarfile $(ls | grep libseccomp) | tar x --one-top-level=libseccomp
